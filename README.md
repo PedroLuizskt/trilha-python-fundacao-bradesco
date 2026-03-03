@@ -15,7 +15,7 @@ Para ver o detalhamento arquitetural do projeto principal, acesse o [README do P
 
 # 🔐 App de Autenticação com Kivy (Projeto 1)
 
-![Interface do Aplicativo](ProjetoInterface/kivy_login_app/docs/exemple.png)
+![Interface do Aplicativo](ProjetoInterface/kivy_login_app/docs/example.png)
 
 ## 📌 Sobre o Projeto
 Desenvolvi este sistema completo de login e registro de usuários como o primeiro projeto prático da Trilha de Python da Fundação Bradesco. A aplicação simula um fluxo real de autenticação, possuindo validação de credenciais, persistência local de dados e transição dinâmica de telas.
