@@ -81,4 +81,60 @@ kivy_login_app/
     └── example.png   # Screenshot da interface
 
 ```
+---
 
+# 🗄️ App de Cadastro de Clientes com SQLite (Projeto 2)
+
+   ![Interface do Aplicativo CRUD](./ProjetoInterface/crud_sqlite_app/docs/example.png)
+
+## 📌 Sobre o Projeto
+Desenvolvido como o projeto final do módulo de Estruturas de Dados e Banco de Dados da Trilha Python. Trata-se de um sistema CRUD (Create, Read, Update, Delete) desktop completo, integrado a um banco de dados relacional embarcado (SQLite). O sistema permite o gerenciamento de clientes em uma interface gráfica intuitiva e performática.
+
+## 🛠️ Ferramentas e Tecnologias
+* **Python 3.x:** Linguagem base da aplicação.
+* **Tkinter:** Biblioteca gráfica padrão do Python (GUI) utilizada para a construção do *Frontend*.
+* **SQLite3 (DB-API 2.0):** Motor de banco de dados relacional embutido (*embedded database*) operando nativamente em C para latência ultrabaixa.
+* **PyInstaller:** Utilizado para o deploy e empacotamento da aplicação em um executável autônomo (`.exe`).
+
+## 🚀 Melhorias e Arquitetura Implementada
+O projeto original do curso foi completamente refatorado para aderir a padrões de Engenharia de Software e melhores práticas de mercado:
+
+* **Arquitetura MVC (Model-View-Controller):** Separação estrita de responsabilidades. A interface gráfica (Tkinter) atua como View/Controller centralizada no arquivo `main.py`, enquanto toda a lógica de persistência de dados (Model) foi encapsulada no `database.py`.
+* **Programação Orientada a Objetos (POO):** Eliminação total de variáveis globais (`global`). A aplicação foi estruturada dentro da classe `AppCliente`, garantindo o encapsulamento seguro do estado da interface (como o controle da linha selecionada no Listbox).
+* **Gerenciamento de Contexto (`with` statements):** Implementação de gerenciadores de contexto nas transações do banco de dados (`with sqlite3.connect(...)`). Isso garante o fechamento seguro da conexão e prevenção de *memory leaks* e *database locks*, mesmo em caso de exceções no código.
+* **Segurança de Execução:** O motor do banco de dados foi configurado com `CREATE TABLE IF NOT EXISTS`, permitindo que a infraestrutura física (`clientes.db`) nasça de forma autônoma e limpa na primeira execução do software pelo usuário final.
+
+## ⚙️ Como Executar Localmente
+
+Siga os passos abaixo para rodar a aplicação via código-fonte em sua máquina:
+
+1. **Navegue até a pasta do projeto:**
+   ```bash
+   cd ProjetoInterface/crud_sqlite_app
+   ``` 
+Execute o aplicativo:
+
+```bash
+python main.py
+```
+Nota: Não é necessário instalar bibliotecas externas via pip (exceto se for gerar o build com PyInstaller), pois o Tkinter e o SQLite3 fazem parte da biblioteca padrão do Python (Standard Library).
+
+📦 Como Gerar o Executável (Deploy)
+Caso queira gerar a versão .exe para distribuição no Windows:
+
+```bash
+pip install pyinstaller
+pyinstaller --onefile --windowed main.py
+```
+O arquivo final estará disponível na pasta dist/.
+
+📁 Estrutura de Arquivos
+```text
+crud_sqlite_app/
+│
+├── database.py       # (Model) Lógica e queries do banco de dados relacional
+├── main.py           # (View/Controller) Interface gráfica e eventos do Tkinter
+├── main.spec         # Configurações de build do PyInstaller
+├── .gitignore        # Bloqueio de artefatos de build e instâncias do banco (.db)
+└── docs/
+    └── example.png   # Screenshot da interface
