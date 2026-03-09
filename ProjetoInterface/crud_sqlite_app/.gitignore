@@ -1,0 +1,12 @@
+# Banco de Dados SQLite
+*.db
+*.sqlite3
+
+# Arquivos compilados do Python
+__pycache__/
+*.pyc
+
+# Arquivos do PyInstaller
+build/
+dist/
+*.log
